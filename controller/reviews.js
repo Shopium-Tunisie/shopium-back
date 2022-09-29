@@ -42,14 +42,6 @@ exports.ajouterCommentaire = async (req, res) => {
     return res.status(500).json(error);
   }
 };
-exports.toutCommentaires = async (req, res) => {
-  try {
-    const reviews = await Reviews.find();
-    return res.status(200).json(reviews);
-  } catch (error) {
-    res.json(error);
-  }
-};
 exports.getCommentaireByProduct = async (req, res) => {
   try {
     const productID = req.body.productId;

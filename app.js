@@ -11,7 +11,6 @@ const categoryRouter = require('./routes/categoryRoute');
 const ProductRouter = require("./routes/productRoute");
 const OfferRouter = require("./routes/offreRouter");
 const subCategory_route = require('./routes/subCategory');
-const bodyParser = require('body-parser');
 const FideliteRouter = require('./routes/fideliteRouter');
 const RibRouter = require('./routes/rib');
 const CompanyRouter = require("./routes/fabricant");
@@ -19,6 +18,8 @@ const reviewsRouter = require('./routes/reviews');
 const RouterTicket = require('./routes/ticket');
 const routerFavorite = require('./routes/favorite');
 const routerWishList = require('./routes/wishList');
+
+const bodyParser = require('body-parser');
 app.use(cors())
 app.use(express.json())
 app.use(bodyParser.json());

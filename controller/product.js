@@ -78,36 +78,6 @@ const productCtrl = {
             return res.status(500).json({msg: err.message})
         }
     },
-    addProduct:async(req,res)=>{
-        try {
-            var arrayImages =[];
-            for (let index = 0; index < req.files.length; index++) {
-                arrayImages[index]=req.files[index].filename;
-            }
-             const { name, price ,barcode ,categoryId} = req.body;
-            console.log({categoryId});
-            const categories = await Category.findOne({categoryId});
-            console.log({'categories':categories});
-            if(!categories) return res.send({success:false,msg:'category not found ! '});
-            const product = await Products.findOne({name:name})
-            if(product)
-                return res.status(400).json({msg: "This product already exists."})
-    
-            const newProduct = new Products({
-                name: name.toLowerCase(), price,barcode,
-                categoryId:categoryId,
-                photo:arrayImages
-            });
-    
-            await newProduct.save();
-            //////////////////////////////// relation one To Many
-            await Category.updateMany({'id':newProduct.categoryId},{$push:{products:newProduct._id}})
-            ///////////////////////////////
-            res.json({success:true,msg: "Created a product",data:newProduct})
-        } catch (error) {
-            res.status(400).send({success:false,msg:error.message});
-        }
-    },
 
     getFabricantByProduct:async(req,res)=>{
         const id= req.body.id;
@@ -135,26 +105,6 @@ const productCtrl = {
         }
     },
 
-    likeproduct:async(req,res)=>{
-        try {
-            const id = req.body.id;
-            const like = req.body.like;
-            console.log(like);
-            console.log(id);
-            const product = await ProductModel.findById({_id:id});
-                if(!product)
-                    return res.status(404).json({message:'product Not found !!!'});
-               if(product.like===true){
-                product.like=false
-               }else{
-                product.like =true
-               }
-                await product.save();
-                res.status(200).json(product);
-        } catch (error) {
-            console.log(error);
-        }
-    },
 
     getProductByCategory:async(req,res)=>{
         try {
