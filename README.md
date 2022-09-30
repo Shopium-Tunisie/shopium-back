@@ -42,7 +42,7 @@
 <!-- ABOUT THE PROJECT -->
 ## A propos
 
-* Shopmium est une application mobile de remboursement divisé en deux parties <a href="https://github.com/FaroukGouadria/front-Shopium.git">front-end</a> et <a name="readme-top"> back-end</a> .   
+* Shopmium est une application mobile de remboursement divisé en deux parties <a href="https://github.com/FaroukGouadria/front-Shopium.git">front-end</a> et <a name="readme-top"> back-end</a> et c’est la partie que nous détaillerons dans cette documentation .   
 * Cette documentation présente les outils et technologies que nous avons utilisés pour développer la partie back-end .
 
 
